@@ -1,6 +1,10 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
+    scrollbar-width: none;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
 }
 
 .navbar {
@@ -8,20 +12,23 @@ body {
     justify-content: space-between;
     align-items: center;
     background-color: #fff;
-    padding: 15px 30px;
+    padding: 10px 30px;
     border-bottom: 5px solid blue ;
 }
 
 .logo {
+    display: inline;
     color: black;
     font-size: 24px;
-    font-weight: bold;
+    font-weight: 800;
 }
 
 .nav-links {
     font-weight: 700;
     list-style: none;
     display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 0;
     padding: 0;
 }
@@ -33,60 +40,62 @@ body {
 .nav-links a {
     color: black;
     text-decoration: none;
+    border: none;
     font-size: 18px;
+    position: relative; /* Add position: relative */
+  display: inline-block; /* Add display: inline-block */
+  z-index: 1;
 }
 
-.nav-links a:hover {
-    text-decoration: underline;
-    text-decoration-color: orange;
-    text-decoration-thickness: 3px;
-}
 
 .nav-links a::after {
     content: '';
     position: absolute;
     left: 50%;
-    bottom: 0; /* Position it at the bottom of the text */
+    bottom: 0; 
     width: 0; /* Start with 0 width */
     height: 2px; /* Underline thickness */
-    background: #000; /* Underline color */
+    background: orange; /* Underline color */
     transition: width 0.4s ease, left 0.4s ease; /* Transition effect */
 }
 
-.nav-links a:hover::after {
+.nav-links a:not(#download-btn):hover::after {
     width: 100%; /* Full width on hover */
     left: 0; /* Move left to start from the middle */
 }
 
-.download-btn {
+#download-btn {
     background-color: orange;
     padding: 10px 20px;
     border-radius: 5px;
-    color: solid white;
+    color: white;
     text-decoration: none;
 }
 
-.download-btn:hover {
-    background-color: darkorange;
+#download-btn:hover{
+    background-color: #000;
+    transition: ease-in-out 0.5s;
 }
+
 
 body{
     align-items: center;
 }
 
 .content-button button{
-    background-color: orange;
     border: none;
     border-radius: 5px;
     color: #fff;
     font-weight: 700;
-}
-
-.content-button button{
     padding: 5px 10px;
     font-size: 16px;
     font-weight: 900;
     background-color: rgb(255, 115, 0);
+}
+
+.content-button button:hover{
+    background-color: #000;
+    transition: ease-in-out 0.5s;
 }
 .content-items button{
     background-color: rgb(255, 229, 181);
@@ -95,12 +104,13 @@ body{
     height: 35px;
     width: 150px;
     font-weight: 700;
+    margin: 6px 5px;
     
 }
 .content-items{
-    align-items: center;
-    align-content: center;
-    align-self: center;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 #mc{
@@ -117,17 +127,10 @@ body{
     padding: 0;
 }
 
-
-body {
-    height: 100vh;
-    margin: 0;
-    background-color: #f0f0f0;
-}
-
 .card {
     display: flex;
-    width: 300px;
-    height: 400px;
+    width: 250px;
+    height: 350px;
     perspective: 1000px; 
     padding: 10px;
 }
@@ -173,7 +176,53 @@ body {
 
 .items{
     display: flex;
-    padding-top: 50px;
-    padding-left: 130px;
+    justify-content: space-between;
     align-items: center;
+    margin: 50px 150px;
+}
+
+.navbar .nav-links li{
+    position: relative;
+}
+
+.parent{
+    display: flexbox;
+    padding: 10px 0;
+}
+
+.dropdown{
+    position: absolute;
+    list-style: none;
+    border: none;
+    top: 100%;
+    left: -450px;
+    background-color: #fff1d6;
+    border-radius: 23px;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    z-index: 1;
+    display: none;
+    transition: 0.4s ease-in-out;
+}
+
+.parent:hover::after{
+    bottom: 10px;
+}
+
+.dropdown li a{
+    font-size: 18px;
+    font-weight: 700;
+    transition: 0.4s ease-in-out;
+}
+
+.dropdown:hover, .parent:hover+.dropdown{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-gap: 15px;
+}
+
+.dropdown li a:hover {
+    background-color: #fffaf0;
+    transform: scale(1.08);
 }
